@@ -26,7 +26,7 @@ function loadData() {
     $body.append('<img class="bgimg" src="' + src + '">');
 
     // New York times articles
-    var nytURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=';
+    var nytURL = 'https://api.nyttimes.com/svc/search/v2/articlesearch.json?q=';
     var nytAPIKey = '&api-key=6e6a7d8710f64281951d89fbd7a7325c';
     nytURL = nytURL + city + nytAPIKey;
     // cosole.log(nytAPIKey);
@@ -38,9 +38,12 @@ function loadData() {
         articles.forEach( function(article) {
             // iterate through the items in the array and make list item elements
             $nytElem.append('<li class="article"><a href="' +
-                article.web_url + '"">' + article.headline.main + '</a></li>');
+                article.web_url + '"">' + article.headline.main + '</a></li>' +
+                '<p>' + article.snippet + '</p>');
         });
-    });
+
+    }).fail(function() { $nytHeaderElem.append(' Could Not Be Loaded At This Time') });
+
 
     return false;
 };

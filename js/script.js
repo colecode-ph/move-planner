@@ -42,7 +42,9 @@ function loadData() {
                 '<p>' + article.snippet + '</p>');
         });
 
-    }).fail(function() { $nytHeaderElem.append(' Could Not Be Loaded At This Time') });
+    }).fail(function() {
+        $nytHeaderElem.append(' Could Not Be Loaded At This Time')
+    });
 
 
     return false;
